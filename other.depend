@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1575301527 source:d:\documents\semester 8\computer graphics\project_cg\main.cpp
+1576325834 source:d:\documents\semester 8\computer graphics\other\main.cpp
 	<windows.h>
 	<iostream>
 	<GL/glut.h>
@@ -222,4 +222,10 @@
 
 1341006774 c:\program files (x86)\codeblocks\mingw\include\math.h
 	<_mingw.h>
+
+1576327342 source:d:\documents\semester 8\computer graphics\project\main.cpp
+	<windows.h>
+	<iostream>
+	<GL/glut.h>
+	<math.h>
 

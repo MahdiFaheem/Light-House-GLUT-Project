@@ -8,6 +8,8 @@
 int waterStatus = 0;
 float waterX = 0;
 float waterY = 0;
+float boatx=0;
+float boaty=0;
 //////car
 int carStatus = 0;
 float carX = 0;
@@ -27,6 +29,9 @@ float birdsY = 0;
 //////moon
 float moonX = 0;
 float moonY = 0;
+//////
+float shipX = 0;
+float shipY =0;
 //////
 int snowStatus = 0;
 int  CloudmeghStatus =0;
@@ -391,6 +396,8 @@ void daywater(){
     glVertex2f(70, 230);
     glVertex2f(10, 230);
     glEnd();
+    //////////////
+
     ///////////////////////////////noukar soi
     glColor3ub (206, 175, 109);
     glBegin(GL_POLYGON);
@@ -447,6 +454,223 @@ void daywater(){
     glVertex2f(20, 220);
     glEnd();
 }
+////////////////boat////////////////
+void dayboat()///boat
+{
+    glColor3ub (153, 51, 0);
+    glBegin(GL_QUADS);
+    glVertex2f(380, 60);
+    glVertex2f(470, 60);
+    glVertex2f(490, 100);
+    glVertex2f(360, 100);
+    glEnd();
+    glColor3ub (255, 255, 153);
+    glBegin(GL_QUADS);
+    glVertex2f(410, 100);
+    glVertex2f(470, 100);
+    glVertex2f(470, 126);
+    glVertex2f(410, 126);
+    glEnd();
+    glLineWidth(1.0);
+	glBegin(GL_LINES);
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glVertex2f(415.0f, 100.0f);
+	glVertex2f(415.0f, 126.0f);
+    glEnd();
+    glBegin(GL_LINES);
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glVertex2f(430.0f, 100.0f);
+	glVertex2f(430.0f, 126.0f);
+    glEnd();
+
+    glBegin(GL_LINES);
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glVertex2f(433.0f, 100.0f);
+	glVertex2f(433.0f, 126.0f);
+    glEnd();
+
+    glBegin(GL_TRIANGLES);
+	glColor3f(1.0f, 0.0f, 0.0f); // Red
+    glVertex2f(390.0f, 118.0f);    // x, y
+	glVertex2f(415.0f, 125.0f);
+	glVertex2f(415.0f,  210.0f);
+
+	glEnd();
+
+	 glBegin(GL_TRIANGLES);
+	glColor3f(1.0f, 0.0f, 0.0f); // Red
+    glVertex2f(405.0f, 118.0f);    // x, y
+	glVertex2f(430.0f, 125.0f);
+	glVertex2f(430.0f,  240.0f);
+
+	glEnd();
+
+	 glBegin(GL_TRIANGLES);
+	glColor3f(1.0f, 0.0f, 0.0f); // Red
+    glVertex2f(458.0f, 118.0f);    // x, y
+	glVertex2f(433.0f, 125.0f);
+	glVertex2f(433.0f,  240.0f);
+
+	glEnd();
+
+
+
+
+}
+//////////////Ship////////////////////
+void nightship()
+{
+    //////red part
+    glColor3ub (255, 51,0 );
+    glBegin(GL_QUADS);
+    glVertex2f(30, 200);
+    glVertex2f(120, 200);
+    glVertex2f(126, 209);
+    glVertex2f(27, 209);
+
+    glEnd();
+     ////white part
+    glColor3ub (234, 234, 234);
+    glBegin(GL_QUADS);
+    glVertex2f(27, 209);
+    glVertex2f(126, 209);
+    glVertex2f(144, 230);
+    glVertex2f(20, 230);
+    glEnd();
+    //////circle
+    glColor3ub (0, 0, 102);
+    DrawCircle(30, 219, 4, 6000);
+    glEnd();
+    glColor3ub (0, 0, 102);
+    DrawCircle(45, 219, 4, 6000);
+    glEnd();
+    glColor3ub (0, 0, 102);
+    DrawCircle(60, 219, 4, 6000);
+    glEnd();
+    glColor3ub (0, 0, 102);
+    DrawCircle(75, 219, 4, 6000);
+    glEnd();
+    glColor3ub (0, 0, 102);
+    DrawCircle(90, 219, 4, 6000);
+    glEnd();
+
+    glColor3ub (0, 0, 102);
+    DrawCircle(105, 219, 4, 6000);
+    glEnd();
+
+    glColor3ub (0, 0, 102);
+    DrawCircle(120, 219, 4, 6000);
+    glEnd();
+    //////////////1st
+
+    glColor3ub (255, 204, 102);
+    glBegin(GL_QUADS);
+    glVertex2f(30, 230);
+    glVertex2f(120, 230);
+    glVertex2f(110, 250);
+    glVertex2f(40, 250);
+    glEnd();
+   ///////////chad
+   glColor3ub (255, 0, 0);
+    glBegin(GL_QUADS);
+    glVertex2f(70, 250);
+    glVertex2f(107, 250);
+    glVertex2f(100, 270);
+    glVertex2f(70, 270);
+    glEnd();
+//////////////////line
+
+	glLineWidth(3.0);
+
+	glBegin(GL_LINES);
+	glColor3ub (153, 51, 0);
+	glVertex2f(40.0f, 250.0f);    // x, y
+	glVertex2f(50.0f, 278.0f);
+	glVertex2f(50.0f, 278.0f);   // x, y
+	glVertex2f(70.0f, 278.0f);
+	glVertex2f(70.0f, 278.0f);
+	glVertex2f(70.0f, 269.8f);
+     glEnd();
+     glBegin(GL_LINES);
+	glColor3ub (153, 51, 0);
+	glVertex2f(50.0f, 250.0f);
+	glVertex2f(50.0f, 278.0f);
+	glVertex2f(55.0f, 250.0f);
+	glVertex2f(55.0f, 278.0f);
+	glVertex2f(60.0f, 250.0f);
+	glVertex2f(60.0f, 278.0f);
+	glVertex2f(65.0f, 250.0f);
+	glVertex2f(65.0f, 278.0f);
+     glEnd();
+     /////////////window
+     glBegin(GL_POLYGON);
+	glColor3ub (77, 77,77);
+	glVertex2f(42.0f, 235.0f);
+	glVertex2f(50.0f, 235.0f);
+	glVertex2f(50.0f, 245.0f);
+	glVertex2f(42.0f, 245.0f);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3ub (77, 77,77);
+	glVertex2f(54.0f, 235.0f);
+	glVertex2f(62.0f, 235.0f);
+	glVertex2f(62.0f, 245.0f);
+	glVertex2f(54.0f, 245.0f);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3ub (77, 77,77);
+	glVertex2f(66.0f, 235.0f);
+	glVertex2f(74.0f, 235.0f);
+	glVertex2f(74.0f, 245.0f);
+	glVertex2f(66.0f, 245.0f);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3ub (77, 77,77);
+	glVertex2f(78.0f, 235.0f);
+	glVertex2f(86.0f, 235.0f);
+	glVertex2f(86.0f, 245.0f);
+	glVertex2f(78.0f, 245.0f);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3ub (77, 77,77);
+	glVertex2f(90.0f, 235.0f);
+	glVertex2f(98.0f, 235.0f);
+	glVertex2f(98.0f, 245.0f);
+	glVertex2f(90.0f, 245.0f);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3ub (77, 77,77);
+	glVertex2f(102.0f, 235.0f);
+	glVertex2f(110.0f, 235.0f);
+	glVertex2f(110.0f, 245.0f);
+	glVertex2f(102.0f, 245.0f);
+	glEnd();
+//////////////
+     glBegin(GL_POLYGON);
+	glColor3ub (77, 77,77);
+	glVertex2f(78.0f, 255.0f);
+	glVertex2f(86.0f, 255.0f);
+	glVertex2f(86.0f, 265.0f);
+	glVertex2f(78.0f, 265.0f);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3ub (77, 77,77);
+	glVertex2f(90.0f, 255.0f);
+	glVertex2f(98.0f, 255.0f);
+	glVertex2f(98.0f, 265.0f);
+	glVertex2f(90.0f, 265.0f);
+	glEnd();
+
+
+
+}
+
 ////////////////////////////////////////////////////move  the  water
 void nightwater(){
     glColor3ub (169, 242, 242);
@@ -522,6 +746,7 @@ void moveWater(int x){
     {
         waterX = -200;
     }
+
     glPushMatrix();
     glTranslatef(waterX, waterY, 0);
     if(x==1)
@@ -530,6 +755,52 @@ void moveWater(int x){
     }
     else{
         nightwater();
+    }
+    glPopMatrix();
+
+    glFlush();
+}
+void moveShip(int x){
+
+        shipX += .5;
+
+    if (shipX>250)
+    {
+        shipX =+ 250;
+    }
+
+    glPushMatrix();
+    glTranslatef(shipX, shipY, 0);
+    if(x==1)
+        {
+  nightship();
+    }
+    else{
+        nightship();
+    }
+    glPopMatrix();
+
+    glFlush();
+}
+void moveWaterboat(int xx){
+
+
+        boatx-= .5;
+
+
+    if (boatx<-600)
+    {
+        boatx =+ 200;
+    }
+
+    glPushMatrix();
+    glTranslatef(boatx, boaty, 0);
+    if(xx==1)
+        {
+    dayboat();
+    }
+    else{
+       dayboat();
     }
     glPopMatrix();
     glFlush();
@@ -734,8 +1005,10 @@ if(position2<=225.0f){
     land();
 
     river();
-    moveWater(1);
 
+    moveWater(1);
+    moveWaterboat(1);
+    // moveShip(1);
     movebirds();
 
     moveMegh(1);
@@ -784,8 +1057,11 @@ if(position2<=225.0f){
     glDisable(GL_LIGHTING);
 
     moveWater(2);
-    moveMegh(2);
 
+    moveMegh(2);
+    //dayboat();
+    moveShip(1);
+ moveWaterboat(1);
 	glFlush();
     glutPostRedisplay();
     glutSwapBuffers();
@@ -882,6 +1158,7 @@ void myInit(void){
 }
 int main(int argc, char** argv)
 {
+
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(1920,1080);
