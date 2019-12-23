@@ -5,6 +5,7 @@
 #include <math.h>
 
 //////water
+void rainyRiver();
 int waterStatus = 0;
 float waterX = 0;
 float waterY = 0;
@@ -41,6 +42,7 @@ int y=0;
 float wx=0;
 float wy=0;
 ////
+int springstatus=0;
 int lightstatus = 0;
 int snowStatus = 0;
 int  CloudmeghStatus =0;
@@ -937,6 +939,7 @@ void winterriver(){
 }
 
 void daywater(){
+    if(rainstatus==0){
     glColor3ub (169, 242, 242);
     glBegin(GL_LINES);
     glVertex2f(200, 220);
@@ -981,8 +984,7 @@ void daywater(){
 
 
     glEnd();
-   //////boat
-
+    }
    }
    void boat(){
        if(winter==0){ ////////////////////////////////noukar body
@@ -1025,6 +1027,7 @@ void daywater(){
 ////////////////boat////////////////
 void dayboat()///boat
 {
+
     glColor3ub (153, 51, 0);
     glBegin(GL_QUADS);
     glVertex2f(380, 60);
@@ -1080,9 +1083,6 @@ void dayboat()///boat
 	glVertex2f(433.0f,  240.0f);
 
 	glEnd();
-
-
-
 
 }
 //////////////Ship////////////////////
@@ -1286,6 +1286,7 @@ void lighthouse()
 
 ////////////////////////////////////////////////////move  the  water
 void nightwater(){
+    if(rainstatus==0){
     glColor3ub (169, 242, 242);
     glBegin(GL_LINES);
     glVertex2f(200, 220);
@@ -1327,7 +1328,7 @@ void nightwater(){
 
     glEnd();
 
-    glFlush();
+    glFlush();}
 
 }
 void moveWater(int x){
@@ -1344,11 +1345,18 @@ void moveWater(int x){
     glTranslatef(waterX, waterY, 0);
     if(x==1)
         {
-            boat();
-    daywater();
+
+
+             rainyRiver();
+             boat();
+
+            daywater();
     }
     else{
+            rainyRiver();
         nightwater();
+
+
     }
     glPopMatrix();
 
@@ -1379,6 +1387,7 @@ void moveShip(int x){
 void moveWaterboat(int xx){
 
 if(waterboat==1)
+
     {
 
         boatx-= 1;
@@ -1393,6 +1402,7 @@ if(waterboat==1)
     glTranslatef(boatx, boaty, 0);
     if(xx==1)
         {
+
     dayboat();
     }
     else{
@@ -1400,6 +1410,7 @@ if(waterboat==1)
     }
     glPopMatrix();
     glFlush();
+
 }
 
 void megh(){
@@ -1438,32 +1449,10 @@ void Cloudmegh(){
 
 	glFlush();
 }
-/*void moveMegh(int x){
 
-            if(meghStatus ==1){
-            meghX += 2;
-            }
-	if (meghX>600)
-        {
-            meghX = -200;
-        }
-	glPushMatrix();
-	glTranslatef(meghX, meghY, 0);
-
-
-      if(x==1)
-    {
-       megh();
-    }
-    else{
-        Cloudmegh();
-    }
-
-	glPopMatrix();
-	glFlush();
-}*/
 
 void drawSun(){
+    if(rainstatus==0){
     glPushMatrix();
     glTranslatef(0,position2, 0.0f);
     glColor3ub (243, 156, 18);
@@ -1473,11 +1462,12 @@ void drawSun(){
     glEnd();
     glPopMatrix();
     //glFlush();
-
+    }
 }
 
 void drawMoon(){
     //
+    if(rainstatus==0){
     //glTranslatef(0,position4, 0.0f);
 
     glColor3ub (243, 156, 18);
@@ -1486,6 +1476,7 @@ void drawMoon(){
 
     //glPopMatrix();
     glFlush();
+    }
 
 }
 void beakup()
@@ -2295,7 +2286,7 @@ void rainySky(){
             glVertex2f(640, 480);
             glEnd();
 
-            int random1 = rand() % 20 + 1;
+            int random1 = rand() % 10 + 1;
             if(random1==2)
             {
                 sky();
@@ -2307,9 +2298,9 @@ void moveMegh(int x){
             if(meghStatus ==1){
             meghX +=2;
             }
-    if (meghX>2000)
+    if (meghX>550)
         {
-            meghX = -100;
+            meghX = -50;
         }
     glPushMatrix();
     glTranslatef(meghX, meghY, 0);
@@ -2328,8 +2319,449 @@ void moveMegh(int x){
     glPopMatrix();
     glFlush();
 }
+
+
+void rainyRiver()
+{
+    if(rainstatus==1)
+    {
+        int xaxis=1200;
+        int yaxis=255;
+        glColor3ub (169, 242, 242);
+        glBegin(GL_LINES);
+
+        for(int i=0; i<200; i++)
+        {
+            for(int j=0; j<200; j++){
+            glVertex2f( xaxis-10,  yaxis-5);
+            glVertex2f( xaxis-20,  yaxis);
+            glVertex2f( xaxis,  yaxis);
+            glVertex2f(  xaxis-10,  yaxis-5);
+            xaxis-=20;
+        }
+        yaxis-=20;
+        xaxis=640;
+
+        }
+
+
+
+
+
+        glEnd();
+    }
+}
+
+void rainywater()
+{
+    if(rainstatus==1)
+    {
+
+
+        for (int i = 0; i < 150; i++)
+        {
+             int random1 = rand() % 640 + 1;
+            int random2 = rand() % 255 + 1;
+            glColor3ub(255, 255, 255);
+            DrawCircle(random1,random2,1,1000);
+
+
+
+        }
+
+    }
+}
+void fruit()
+{
+    if(springstatus==1 )
+    {
+    glColor3ub (255,0,0);
+    DrawCircle(596, 227, 1, 6000);
+    DrawCircle(592, 233, 1, 6000);
+    DrawCircle(596, 236, 1, 6000);
+    DrawCircle(593, 242, 1, 6000);
+    DrawCircle(596, 246, 1, 6000);
+   DrawCircle(594, 250, 1, 6000);
+    DrawCircle(595, 256, 1, 6000);
+    DrawCircle(594, 262, 1, 6000);
+    glEnd();
+    glFlush();
+    //2nd tree
+    glColor3ub (255,0,0);
+    DrawCircle(587, 230, 1, 6000);
+    DrawCircle(586, 235, 1, 6000);
+    DrawCircle(587, 240, 1, 6000);
+    DrawCircle(586, 247, 1, 6000);
+    glEnd();
+    glFlush();
+    /////3rd tree
+    glColor3ub (255,0,0);
+    DrawCircle(576, 220, 1, 6000);
+    DrawCircle(580, 225, 1, 6000);
+    DrawCircle(579, 230, 1, 6000);
+    DrawCircle(581, 235, 1, 6000);
+    DrawCircle(578, 240, 1, 6000);
+    DrawCircle(581, 247, 1, 6000);
+    glEnd();
+    glFlush();
+    ///////////ful
+    glColor3ub (255,255,0);
+    DrawCircle(445, 247, 1, 6000);
+    glEnd();
+    glColor3ub (255,0,0);
+    DrawCircle(447, 247, 1, 6000);
+    DrawCircle(445, 249, 1, 6000);
+    DrawCircle(443, 247, 1, 6000);
+    DrawCircle(445, 245, 1, 6000);
+    glEnd();
+    glColor3ub (255,255,0);
+    DrawCircle(445, 247, 1.2, 6000);
+    glEnd();
+    glFlush();
+    ///////////////////
+     glColor3ub (255,255,0);
+    DrawCircle(434, 242, 1, 6000);
+    glEnd();
+    glColor3ub (255,0,0);
+    DrawCircle(436, 242, 1, 6000);
+    DrawCircle(434, 244, 1, 6000);
+    DrawCircle(432, 242, 1, 6000);
+    DrawCircle(434, 240, 1, 6000);
+    glEnd();
+
+    ///////////////
+     glColor3ub (255,255,0);
+    DrawCircle(434, 255, 1, 6000);
+    glEnd();
+    glColor3ub (255,0,0);
+    DrawCircle(436, 255, 1, 6000);
+    glEnd();
+    glColor3ub (255,0,0);
+    DrawCircle(434, 257, 1, 6000);
+    glEnd();
+    glColor3ub (255,0,0);
+    DrawCircle(432, 255, 1, 6000);
+    glEnd();
+    glColor3ub (255,0,0);
+    DrawCircle(434, 253, 1, 6000);
+    glEnd();
+    ///////////
+     glColor3ub (255,255,0);
+    DrawCircle(442, 259, 1, 6000);
+    glEnd();
+    glColor3ub (255,0,0);
+    DrawCircle(444, 259, 1, 6000);
+    glEnd();
+    glColor3ub (255,0,0);
+    DrawCircle(442, 261, 1, 6000);
+    glEnd();
+    glColor3ub (255,0,0);
+    DrawCircle(440, 259, 1, 6000);
+    glEnd();
+    glColor3ub (255,0,0);
+    DrawCircle(442, 257, 1, 6000);
+    glEnd();
+     ////////////
+
+    glColor3ub (255,153,0);
+    DrawCircle(462, 245, 1, 6000);
+    glEnd();
+    glColor3ub (255,153,0);
+    DrawCircle(460, 247, 1, 6000);
+    glEnd();
+    glColor3ub (255,153,0);
+    DrawCircle(458, 245, 1, 6000);
+    glEnd();
+    glColor3ub (255,153,0);
+    DrawCircle(460, 243, 1, 6000);
+    glEnd();
+    glColor3ub (255,0,0);
+    DrawCircle(460, 245, 1.2, 6000);
+    glEnd();
+    //////////////
+    glColor3ub (255,153,0);
+    DrawCircle(466, 236, 1, 6000);
+    glEnd();
+    glColor3ub (255,153,0);
+    DrawCircle(464, 238, 1, 6000);
+    glEnd();
+    glColor3ub (255,153,0);
+    DrawCircle(462, 236, 1, 6000);
+    glEnd();
+    glColor3ub (255,153,0);
+    DrawCircle(464, 234, 1, 6000);
+    glEnd();
+    glColor3ub (255,0,0);
+    DrawCircle(464, 236, 1.2, 6000);
+    glEnd();
+    //////////
+    glColor3ub (255,255,0);
+    DrawCircle(412, 220, 1, 6000);
+    glEnd();
+    glColor3ub (255,255,0);
+    DrawCircle(410, 222, 1, 6000);
+    glEnd();
+    glColor3ub (255,255,0);
+    DrawCircle(408, 220, 1, 6000);
+    glEnd();
+    glColor3ub (255,255,0);
+    DrawCircle(410, 218, 1, 6000);
+    glEnd();
+    glColor3ub (255,0,0);
+    DrawCircle(410, 220, 1.2, 6000);
+    glEnd();
+    //////////////
+    glColor3ub (255,255,0);
+    DrawCircle(417, 232, 1, 6000);
+    glEnd();
+    glColor3ub (255,255,0);
+    DrawCircle(415, 234, 1, 6000);
+    glEnd();
+    glColor3ub (255,255,0);
+    DrawCircle(413, 232, 1, 6000);
+    glEnd();
+    glColor3ub (255,255,0);
+    DrawCircle(415, 230, 1, 6000);
+    glEnd();
+    glColor3ub (255,0,0);
+    DrawCircle(415, 232, 1.2, 6000);
+    glEnd();
+    ///////////
+    glColor3ub (255,255,0);
+    DrawCircle(422, 212, 1, 6000);
+    glEnd();
+    glColor3ub (255,255,0);
+    DrawCircle(420, 214, 1, 6000);
+    glEnd();
+    glColor3ub (255,255,0);
+    DrawCircle(418, 212, 1, 6000);
+    glEnd();
+    glColor3ub (255,255,0);
+    DrawCircle(420, 210, 1, 6000);
+    glEnd();
+    glColor3ub (255,0,0);
+    DrawCircle(420, 212, 1.2, 6000);
+    glEnd();
+    ////////////
+    glColor3ub (255,255,0);
+    DrawCircle(404, 212, 1, 6000);
+    glEnd();
+    glColor3ub (255,255,0);
+    DrawCircle(402, 214, 1, 6000);
+    glEnd();
+    glColor3ub (255,255,0);
+    DrawCircle(400, 212, 1, 6000);
+    glEnd();
+    glColor3ub (255,255,0);
+    DrawCircle(402, 210, 1, 6000);
+    glEnd();
+    glColor3ub (255,0,0);
+    DrawCircle(402, 212, 1.2, 6000);
+    glEnd();
+    glColor3ub (255,0,0);
+    DrawCircle(410, 212, 1.2, 6000);
+    glEnd();
+    glColor3ub (255,0,0);
+    DrawCircle(414, 210, 1.2, 6000);
+    glEnd();
+    glColor3ub (255,0,0);
+    DrawCircle(416, 220, 1.2, 6000);
+    glEnd();
+    //////////////////
+    glColor3ub (255,255,255);
+    DrawCircle(608, 220, 1, 6000);
+    DrawCircle(606, 222, 1, 6000);
+    DrawCircle(604, 220, 1, 6000);
+    DrawCircle(606, 218, 1, 6000);
+    glEnd();
+    glColor3ub (255,0,0);
+    DrawCircle(606, 220, 1.2, 6000);
+    glEnd();
+    ////////
+    glColor3ub (255,255,255);
+    DrawCircle(618, 227, 1, 6000);
+    DrawCircle(616, 229, 1, 6000);
+    DrawCircle(614, 227, 1, 6000);
+    DrawCircle(616, 225, 1, 6000);
+    glEnd();
+    glColor3ub (255,0,0);
+    DrawCircle(616, 227, 1.2, 6000);
+    glEnd();
+    ///////
+    glColor3ub (255,255,255);
+    DrawCircle(620, 218, 1, 6000);
+    DrawCircle(618, 220, 1, 6000);
+    DrawCircle(616, 218, 1, 6000);
+    DrawCircle(618, 216, 1, 6000);
+    glEnd();
+    glColor3ub (255,0,0);
+    DrawCircle(618, 218, 1.2, 6000);
+    DrawCircle(610, 225, 1, 6000);
+    DrawCircle(605, 227, 1, 6000);
+    DrawCircle(610, 233, 1, 6000);
+    glEnd();
+    glFlush();
+    glColor3ub (255,102,153);
+    DrawCircle(592, 210, 1.5, 6000);
+    DrawCircle(590, 212, 1.5, 6000);
+    DrawCircle(588, 210, 1.5, 6000);
+    DrawCircle(590, 208, 1.5, 6000);
+    glEnd();
+    glColor3ub (255,255,255);
+    DrawCircle(590, 210, 1.2, 6000);
+    glEnd();
+    ////////
+    glColor3ub (255,102,153);
+    DrawCircle(584, 200, 1.5, 6000);
+    DrawCircle(582, 202, 1.5, 6000);
+    DrawCircle(580, 200, 1.5, 6000);
+    DrawCircle(582, 198, 1.5, 6000);
+    glEnd();
+    glColor3ub (255,255,255);
+    DrawCircle(582, 200, 1.2, 6000);
+    glEnd();
+    //////////////
+    glColor3ub (255,102,153);
+    DrawCircle(597, 200, 1.5, 6000);
+    DrawCircle(595, 202, 1.5, 6000);
+    DrawCircle(593, 200, 1.5, 6000);
+    DrawCircle(595, 198, 1.5, 6000);
+    glEnd();
+    glColor3ub (255,255,255);
+    DrawCircle(595, 200, 1.2, 6000);
+    glEnd();
+    ///////////
+    glColor3ub (255,102,153);
+    DrawCircle(587, 220, 1.5, 6000);
+    DrawCircle(585, 222, 1.5, 6000);
+    DrawCircle(583, 220, 1.5, 6000);
+    DrawCircle(585, 218, 1.5, 6000);
+    glEnd();
+    glColor3ub (255,255,255);
+    DrawCircle(585, 220, 1.2, 6000);
+    glEnd();
+    ////////////
+    glColor3ub (255,51,0);
+    DrawCircle(620, 247, 1.5, 6000);
+    DrawCircle(618, 249, 1.5, 6000);
+    DrawCircle(616, 247, 1.5, 6000);
+    DrawCircle(618, 245, 1.5, 6000);
+    glEnd();
+    glColor3ub (255,255,102);
+    DrawCircle(618, 247, 1.2, 6000);
+    glEnd();
+    glFlush();
+    //////////////
+    glColor3ub (255,51,0);
+    DrawCircle(614, 256, 1.5, 6000);
+    DrawCircle(612, 258, 1.5, 6000);
+    DrawCircle(610, 256, 1.5, 6000);
+    DrawCircle(612, 254, 1.5, 6000);
+    glEnd();
+    glColor3ub (255,255,102);
+    DrawCircle(612, 256, 1.2, 6000);
+    glEnd();
+    ////////////////
+    glColor3ub (255,51,0);
+    DrawCircle(624, 260, 1.5, 6000);
+    DrawCircle(622, 262, 1.5, 6000);
+    DrawCircle(620, 260, 1.5, 6000);
+    DrawCircle(622, 258, 1.5, 6000);
+    glEnd();
+    glColor3ub (255,255,102);
+    DrawCircle(622, 260, 1.2, 6000);
+    glEnd();
+
+
+
+
+       glFlush();
+
+    }
+
+
+}
+void fireflies()
+{
+    int random1=rand()%5+1;
+    int x=rand()%2+1;
+    int y=rand()%2+1;
+
+    if( springstatus==1 && random1==1 )
+    {
+      glColor3ub (187,245,80);
+      DrawCircle(602, 247, 1, 6000);
+      DrawCircle(620, 270, 1, 6000);
+      DrawCircle(610, 280, 1, 6000);
+      DrawCircle(596, 295, 1, 6000);
+      DrawCircle(599, 270, 1, 6000);
+      DrawCircle(630, 295, 1, 6000);
+      DrawCircle(573, 300, 1, 6000);
+      DrawCircle(615, 305, 1, 6000);
+      /////
+      DrawCircle(550, 290, 1, 6000);
+     DrawCircle(520, 370, 1, 6000);
+      DrawCircle(512, 390, 1, 6000);
+     DrawCircle(505, 380, 1, 6000);
+     DrawCircle(496, 390, 1, 6000);
+     DrawCircle(475, 390, 1, 6000);
+     DrawCircle(560, 370, 1, 6000);
+     DrawCircle(450, 350, 1, 6000);
+      DrawCircle(530, 310, 1, 6000);
+    DrawCircle(520, 370, 1, 6000);
+     DrawCircle(530, 340, 1, 6000);
+      DrawCircle(520, 280, 1, 6000);
+       DrawCircle(540, 270, 1, 6000);
+    DrawCircle(590, 370, 1, 6000);
+    DrawCircle(550, 340, 1, 6000);
+    DrawCircle(240, 280, 1, 6000);
+    DrawCircle(400, 280, 1, 6000);
+    DrawCircle(320, 290, 1, 6000);
+    DrawCircle(370, 270, 1, 6000);
+    DrawCircle(340, 290, 1, 6000);
+    DrawCircle(280, 300, 1, 6000);
+    DrawCircle(200, 300, 1, 6000);
+    DrawCircle(180, 260, 1, 6000);
+    DrawCircle(160, 270, 1, 6000);
+    DrawCircle(120, 330, 1, 6000);
+    DrawCircle(140, 300, 1, 6000);
+    DrawCircle(100, 300, 1, 6000);
+    DrawCircle(200, 300, 1, 6000);
+    DrawCircle(320, 300, 1, 6000);
+    DrawCircle(80, 310, 1, 6000);
+    DrawCircle(120, 300, 1, 6000);
+    DrawCircle(170, 320, 1, 6000);
+    DrawCircle(230, 320, 1, 6000);
+    DrawCircle(280, 340, 1, 6000);
+    DrawCircle(320, 350, 1, 6000);
+     DrawCircle(360, 320, 1, 6000);
+    DrawCircle(390, 350, 1, 6000);
+     DrawCircle(410, 330, 1, 6000);
+      DrawCircle(450, 320, 1, 6000);
+       DrawCircle(440, 290, 1, 6000);
+        DrawCircle(420, 280, 1, 6000);
+         DrawCircle(380, 290, 1, 6000);
+      /////////////
+      DrawCircle(x, y, 1, 6000);
+      DrawCircle(x, y, 1, 6000);
+      DrawCircle(x, y, 1, 6000);
+      DrawCircle(x, y, 1, 6000);
+      DrawCircle(x, y, 1, 6000);
+      DrawCircle(x, y, 1, 6000);
+      DrawCircle(x, y, 1, 6000);
+      DrawCircle(x, y, 1, 6000);
+      glEnd();
+      glFlush();
+     // glutTimerFunc(25,fireflies1,0);
+
+    }
+   // glutTimerFunc(25,fireflies,0);
+
+
+}
+
 void myDisplay(void){
-if(position2>= -230.0f){
+if(position2>= -250.0f){
     sky();
     wintersky();
      rainySky();
@@ -2344,7 +2776,9 @@ if(position2>= -230.0f){
 
     river();
     winterriver();
+    rainywater();
     moveWater(1);
+   // rainyRiver();
 
     land();
   winterland();
@@ -2356,6 +2790,8 @@ if(position2>= -230.0f){
       Light();
       lighthouse();
       tree();
+      fruit();
+   //   fireflies();
       snowtree();
       snowtree1();
       moveWaterboat(1);
@@ -2374,7 +2810,7 @@ if(position2>= -230.0f){
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT, global_ambient);
     sky();
     glDisable(GL_LIGHTING);
-
+    rainySky();
     glEnable(GL_LIGHTING);
     GLfloat global_ambient2[] = {1.29,1.29,1.29, 0.1};
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT, global_ambient2);
@@ -2391,7 +2827,9 @@ if(position2>= -230.0f){
     GLfloat global_ambient1[] = {.60,1.90,2.76, 0.1};
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT, global_ambient1);
     river();
+
     glDisable(GL_LIGHTING);
+    winterriver();
 
     glEnable(GL_LIGHTING);
     GLfloat global_ambient4[] = {4.0,4.0,4.0, 0.1};
@@ -2401,6 +2839,8 @@ if(position2>= -230.0f){
     glDisable(GL_LIGHTING);
 
  moveWater(2);
+ rainywater();
+
 
     glEnable(GL_LIGHTING);
     GLfloat global_ambient5[] = {0.0,1.50,1.25, 0.1};
@@ -2418,7 +2858,8 @@ if(position2>= -230.0f){
      Light();
      lighthouse();
      tree();
-
+    fruit();
+    fireflies();
     moveWaterboat(1);
     snowtree1();
     snow();
@@ -2523,15 +2964,24 @@ void keyboard(unsigned char key, int x, int y){
 else if (key == 'l' || key == 'L'){		//bird stop
 		lightstatus = 1;
 	}
-else if (key == 'h' || key == 'H'){		//bird stop
+else if (key == 'h' || key == 'H'){
 		lightstatus = 0;
 	}
-	else if (key == '1' ){		//bird stop
+	else if (key == '1' ){
 		rainstatus = 1;
 	}
 	else if (key == '2' ){		//bird stop
 		rainstatus = 0;
 	}
+	else if (key == 'K' || key == 'k'){		//spring start
+		springstatus=1;
+
+	}
+	else if (key == 'J' || key == 'j'){		//spring start
+		springstatus=0;
+
+	}
+
 }
 
 void myInit(void){
